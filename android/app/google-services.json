@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1024917166067",
+    "project_id": "smart-servant-project",
+    "storage_bucket": "smart-servant-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024917166067:android:d7a424fcdd13ca2a93a486",
+        "android_client_info": {
+          "package_name": "com.services.smartservant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApLLXQ6v7bkGa8zfAGceABFkTGNuszRu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
