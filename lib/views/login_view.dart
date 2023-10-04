@@ -1,10 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-//import 'package:smartservant/firebase_options.dart';
-import 'dart:developer' as devtools show log;
-
 import 'package:smartservant/constants/routes.dart';
+import 'package:smartservant/utilities/show_error_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -73,20 +70,34 @@ class _LoginViewState extends State<LoginView> {
                 );
               } on FirebaseAuthException catch (e) {
                 if (e.code == "INVALID_LOGIN_CREDENTIALS") {
-                  devtools.log("Invalid user");
+                  await showErrorDialog(
+                    context,
+                    "Invalid credentials! Check your email and password.",
+                  );
+                } else {
+                  await showErrorDialog(
+                    context,
+                    "Error: ${e.code}",
+                  );
                 }
+              } catch (e) {
+                await showErrorDialog(
+                  context,
+                  e.toString(),
+                );
               }
             },
             child: const Text("Login"),
           ),
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  registerRoute,
-                  (route) => false,
-                );
-              },
-              child: const Text("Not registered yet? register here!"))
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                registerRoute,
+                (route) => false,
+              );
+            },
+            child: const Text("Not registered yet? register here!"),
+          )
         ],
       ),
     );
